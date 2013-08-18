@@ -4,21 +4,34 @@ var fs = require('fs'),
     path = require('path'),
     dust = require('dustjs-linkedin');
 
-var inpDir = process.argv[2];
-var outDir = process.argv[3];
+var inpDir = __dirname + process.argv[2];
+var outDir = __dirname + process.argv[3];
 
-fs.readdir(__dirname + inpDir,function(err,files){
+if (process.argv[4]) {
+    var destFile = __dirname + process.argv[4];
+}
+
+
+
+fs.readdir(inpDir,function(err,files){
     if (err) throw err;
-    files.forEach(function(file){
-        console.log(file);
-        fs.readFile(__dirname + inpDir + file,'utf-8',function(err,data){
+    files.forEach(function(filename){
+        fs.readFile(inpDir + filename,'utf-8',function(err,data){
             if (err) throw err;
-            var output = dust.compile(data, path.basename(file, '.dust'));
-            console.log(output);
-            fs.writeFile(__dirname + outDir + file, output, function (err) {
+            
+            var output = dust.compile(data, path.basename(filename, '.dust'));
+            
+            fs.writeFile(outDir + filename, output, function (err) {
               if (err) throw err;
-              console.log('It\'s saved!');
+              console.log(filename + ' compiled!');
             });
+
+            if (destFile) {
+                fs.appendFile(destFile, output, function (err) {
+                  if (err) throw err;
+                  console.log('The compiled template ' + filename + ' was appended to ' + path.basename(destFile));
+                });
+            }
         });
     });
 });
