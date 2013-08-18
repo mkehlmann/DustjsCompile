@@ -7,12 +7,16 @@ var fs = require('fs'),
 var inpDir = __dirname + process.argv[2];
 var outDir = __dirname + process.argv[3];
 
+//If optional argument passed, initialize path and clear file
 if (process.argv[4]) {
     var destFile = __dirname + process.argv[4];
+    if (fs.existsSync(destFile)) {
+        fs.unlinkSync(destFile);
+    }
 }
 
-
-
+//Loop through input directory, for each file compile dust and write to identical file in output directory
+//If optional destination file was passed, append compiled output of each file to it
 fs.readdir(inpDir,function(err,files){
     if (err) throw err;
     files.forEach(function(filename){
