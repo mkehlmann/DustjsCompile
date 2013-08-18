@@ -1,0 +1,19 @@
+{
+  "name": "DustjsCompile",
+  "description": "A node script that compiles dust files in an input directory to an output directory",
+  "author": "Matthew Kehlmann",
+  "contributors": ["MatthewKehlmann <kehlmanm@gmail.com>"],
+  "version": "0.0.1",
+  "dependencies": {
+    "dustjs-linkedin": "latest"
+  },
+  "engine": "node >= 0.6.6",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkehlmann/DustjsCompile.git"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "dustjscompile" : "./DustjsCompile.js"
+  }
+}
