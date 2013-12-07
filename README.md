@@ -20,7 +20,9 @@ $ npm install -g dustjscompile
 
 #### Usage 
 
-node DustjsCompile.js uncompiledDirectory compiledDirectory [concatFile]
+```
+dustjscopmile uncompiledDirectory compiledDirectory [concatFile]
+```
 
 If you have the following file structure
 ```
