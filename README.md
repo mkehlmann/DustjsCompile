@@ -21,7 +21,7 @@ $ npm install -g dustjscompile
 #### Usage 
 
 ```
-dustjscopmile uncompiledDirectory compiledDirectory [concatFile]
+dustjscompile uncompiledDirectory compiledDirectory [concatFile]
 ```
 
 If you have the following file structure
@@ -37,7 +37,7 @@ Your usage would be:
 dustjscompile /public/templates/ /public/compiledTemplates/
 ```
 
-If you want to have all of the compiled templates concatenated into a single file , pass a 3 parameter:
+If you want to have all of the compiled templates concatenated into a single file , pass a third parameter:
 ```
 dustjscompile /public/templates/ /public/compiledTempates/ /public/bundle.js
 ```
